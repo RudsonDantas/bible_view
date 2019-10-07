@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="clear_overlay">#33000000</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="black_overlay_darker">#BB000000</color>
+    <color name="white_overlay">#66FFFFFF</color>
+    <color name="file_browser_icon">#CC3C92CA</color>
+    <color name="muted">#CCCCCC</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="light_grey">#66FFFFFF</color>
+</resources>

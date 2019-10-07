@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Bible</string>
+
+    <string-array name="verse_share">
+        <item>Share Link</item>
+        <item>Share Verse</item>
+        <item>Copy Link</item>
+        <item>Copy Verse</item>
+    </string-array>
+</resources>

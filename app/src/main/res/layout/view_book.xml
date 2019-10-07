@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="4dp">
+
+    <LinearLayout style="@style/Linear.Horizontal.Padding">
+
+        <TextView
+            android:id="@+id/abbr"
+            style="@style/Text.Medium"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:textColor="@color/colorPrimary"
+            tools:text="Gen" />
+
+        <TextView
+            android:id="@+id/book_en"
+            style="@style/Text.Medium"
+            tools:text="1 Book" />
+
+        <TextView
+            android:id="@+id/book_af"
+            style="@style/Text.Medium"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:textColor="@color/light_grey"
+            tools:text="1 Boek" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

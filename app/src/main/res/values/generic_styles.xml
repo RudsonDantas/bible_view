@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Linear">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="Linear.Horizontal">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="Linear.Horizontal.Padding">
+        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingBottom">@dimen/activity_vertical_margin</item>
+        <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
+    </style>
+
+    <style name="Linear.Padding">
+        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingBottom">@dimen/activity_vertical_margin</item>
+        <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
+    </style>
+
+    <style name="Outer" parent="Linear">
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="OuterPadding" parent="Linear.Padding">
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="Text">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="Text.Fit">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="Text.Medium" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Text.Large" parent="TextAppearance.AppCompat.Large">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Text.Large.Center">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <style name="Text.Right">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">end</item>
+        <item name="android:layout_gravity">end</item>
+    </style>
+
+    <style name="Text.Mono">
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Scroll">
+        <item name="android:scrollbarStyle">insideOverlay</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:fadeScrollbars">true</item>
+    </style>
+
+    <style name="MainTitle">
+        <item name="android:background">@drawable/card_background</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">120dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:elevation">8dp</item>
+    </style>
+</resources>
