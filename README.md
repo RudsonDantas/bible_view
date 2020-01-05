@@ -14,7 +14,7 @@ This app was designed so that you can get the bible verses in either English or 
 
 # Sources:
 
-Bible verses come from: <https://github.com/brendancol/king-json-bible>
+Bible verses come from: <https://github.com/thiagobodruk/bible>
 And the English-Afrikaans names come from <https://wordproject.org/bibles/af_2/index_en.htm#1>
 
 # Notes:
@@ -22,3 +22,6 @@ And the English-Afrikaans names come from <https://wordproject.org/bibles/af_2/i
 * I do not own any of the content, content comes from above sources.
 * This app was written for a friend, and does not contain any of my own religious views.
 * The first run of this app will take awhile to load while the local database populates.
+
+If you update from a previous version, the database will go blank, clear storage and this will be fixed, a future version might fix this error"
+
