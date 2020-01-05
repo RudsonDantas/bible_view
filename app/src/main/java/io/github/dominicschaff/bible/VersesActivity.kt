@@ -32,7 +32,7 @@ class VersesActivity : AppCompatActivity() {
         }
         book = Db(this).getBookFromChapterId(chapterId)!!
         chapter = Db(this).getChapterById(chapterId)!!
-        title = "${book.name} : ${chapter.title}"
+        title = "${book.name} : ${chapter.id + 1}"
 
 
         val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(applicationContext)
@@ -84,22 +84,22 @@ class VersesActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
             val verse = verses[i]
-            val verseLocation = "${book.abbreviation} ${chapter.title}:$i"
+            val verseLocation = "${book.abbreviation} ${chapter.id + 1}:$i"
 
-            viewHolder.number.text = verse.id.toString()
+            viewHolder.number.text = (verse.id + 1).toString()
             viewHolder.text.text = verse.text
             viewHolder.view.setOnLongClickListener {
                 activity.chooser(verseLocation, activity.resources.getStringArray(R.array.verse_share), callback = { action, _ ->
                     when (action) {
                         0 -> activity.share(verseLocation)
-                        1 -> activity.share("${book.name} ${chapter.title}:$i\n${verse.text}")
+                        1 -> activity.share("${book.name} ${chapter.id + 1}:$i\n${verse.text}")
                         2 -> {
                             val clipboard = activity.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                             clipboard.setPrimaryClip(ClipData.newPlainText(verseLocation, verseLocation))
                             activity.toast("Verse reference has been copied to clipboard")
                         }
                         3 -> {
-                            val v = "${book.name} ${chapter.title}:$i\n${verse.text}"
+                            val v = "${book.name} ${chapter.id + 1}:$i\n${verse.text}"
                             val clipboard = activity.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                             clipboard.setPrimaryClip(ClipData.newPlainText(v, v))
                             activity.toast("Verse and verse reference has been copied to clipboard")

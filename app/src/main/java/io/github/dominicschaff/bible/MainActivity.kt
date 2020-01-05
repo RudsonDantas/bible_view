@@ -29,35 +29,30 @@ class MainActivity : AppCompatActivity() {
 
             val db = Db(context)
 
-            val json = context.loadJSONFromAsset("books.json").fileAsJsonArray()
-                .mapObject {
-                    doBookData(db, l("id"), s("file"))
-                    Book(
-                        l("id"),
-                        s("book"),
-                        s("abbreviation"),
-                        s("name"),
-                        s("name_af")
-                    )
-                }.forEach { db.add(it) }
+            val bible = context.loadJSONFromAsset("en_bbe.json").fileAsJsonArray()
+
+            bible.forEachIndexed { index, jsonElement ->
+                val bookJson = jsonElement.asJsonObject
+                val book = Book(
+                    index.toLong(),
+                    bookJson.s("abbrev"),
+                    bookJson.s("name"),
+                    bookJson.s("abbrev").afrikaansBookName()
+                )
+                db.add(book)
+                bookJson.a("chapters").forEachIndexed { chapterIndex, chapterElement ->
+                    val chapter = Chapter(book.id * 1000 + chapterIndex, book.id)
+                    db.add(chapter)
+                    chapterElement.asJsonArray.forEachIndexed { verseIndex, verseElement ->
+                        val verse = Verse(verseIndex.toLong(), chapter.id, verseElement.asString)
+                        db.add(verse)
+                    }
+                }
+            }
             return null
         }
 
         override fun onPostExecute(result: Void?) = f()
-
-        private fun doBookData(db: Db, book: Long, file: String) {
-            file.log()
-            val chaptersDone = ArrayList<Long>()
-            val json = context.loadJSONFromAsset(file).fileAsJsonObject().a("verses")
-                .mapObject {
-                    val chapter = l("chapter")
-                    val chapterId = book * 1000 + chapter
-                    if (!chaptersDone.contains(chapter)) {
-                        db.add(Chapter(chapterId, book, "$chapter"))
-                    }
-                    db.add(Verse(l("verse"), chapterId, s("text")))
-                }
-        }
     }
 
     private fun done() {
