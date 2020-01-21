@@ -20,6 +20,7 @@ data class Book(
 
 data class Chapter(
     val id: Long,
+    val index: Long,
     val book: Long
 
 )
@@ -37,7 +38,7 @@ class Db(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATA
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE book (id INTEGER PRIMARY KEY, abbreviation TEXT, name TEXT, name_af TEXT)")
-        db.execSQL("CREATE TABLE chapter (id INTEGER PRIMARY KEY, book long)")
+        db.execSQL("CREATE TABLE chapter (id INTEGER PRIMARY KEY, chapter_index long, book long)")
         db.execSQL("CREATE TABLE verse (id INTEGER, chapter INTEGER, content TEXT)")
     }
 
@@ -70,6 +71,7 @@ class Db(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATA
 
         val values = ContentValues().apply {
             put("id", chapter.id)
+            put("chapter_index", chapter.index)
             put("book", chapter.book)
         }
 
@@ -121,7 +123,7 @@ class Db(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATA
 
         val cursor = db.query(
             "chapter",
-            arrayOf("id", "book"),
+            arrayOf("id", "chapter_index", "book"),
             "book = $book",
             null,
             null,
@@ -134,7 +136,8 @@ class Db(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATA
                 chapters.add(
                     Chapter(
                         getLong(0),
-                        getLong(1)
+                        getLong(1),
+                        getLong(2)
                     )
                 )
             }
@@ -231,7 +234,7 @@ class Db(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATA
 
         val cursor = db.query(
             "chapter",   // The table to query
-            arrayOf("id", "book"),
+            arrayOf("id", "chapter_index", "book"),
             "id = $chapter",
             null,
             null,
@@ -244,7 +247,8 @@ class Db(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATA
                 chapters.add(
                     Chapter(
                         getLong(0),
-                        getLong(1)
+                        getLong(1),
+                        getLong(2)
                     )
                 )
             }

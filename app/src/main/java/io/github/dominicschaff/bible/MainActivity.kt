@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                 )
                 db.add(book)
                 bookJson.a("chapters").forEachIndexed { chapterIndex, chapterElement ->
-                    val chapter = Chapter(book.id * 1000 + chapterIndex, book.id)
+                    val chapter = Chapter(book.id * 1000 + chapterIndex, chapterIndex.toLong(), book.id)
                     db.add(chapter)
                     chapterElement.asJsonArray.forEachIndexed { verseIndex, verseElement ->
                         val verse = Verse(verseIndex.toLong(), chapter.id, verseElement.asString)

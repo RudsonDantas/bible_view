@@ -71,7 +71,7 @@ class ChapterListActivity : AppCompatActivity() {
         override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
             val chapter = chapters[i]
 
-            viewHolder.name.text = "${chapter.id + 1}"
+            viewHolder.name.text = "${chapter.index + 1}"
 
             viewHolder.view.setOnClickListener {
                 activity.goto(VersesActivity::class.java, custom = {
